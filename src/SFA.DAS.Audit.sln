@@ -15,6 +15,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{A150B6FB
 		RunBuild.bat = RunBuild.bat
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{4057E0AE-A234-41FD-A243-342224720B81}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFA.DAS.Audit.Web.UnitTests", "SFA.DAS.Audit.Web.UnitTests\SFA.DAS.Audit.Web.UnitTests.csproj", "{D6534A02-8980-4CA3-8DE7-DD2B060D7DCC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,8 +37,15 @@ Global
 		{48D20CE3-9D10-4C2A-927D-9CE49FD8C974}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{48D20CE3-9D10-4C2A-927D-9CE49FD8C974}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{48D20CE3-9D10-4C2A-927D-9CE49FD8C974}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6534A02-8980-4CA3-8DE7-DD2B060D7DCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6534A02-8980-4CA3-8DE7-DD2B060D7DCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6534A02-8980-4CA3-8DE7-DD2B060D7DCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6534A02-8980-4CA3-8DE7-DD2B060D7DCC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D6534A02-8980-4CA3-8DE7-DD2B060D7DCC} = {4057E0AE-A234-41FD-A243-342224720B81}
 	EndGlobalSection
 EndGlobal
