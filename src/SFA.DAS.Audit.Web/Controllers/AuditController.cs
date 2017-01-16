@@ -1,7 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using System.Web.Http;
 using MediatR;
 using NLog;
+using SFA.DAS.Audit.Application.QueueAuditMessage;
+using SFA.DAS.Audit.Application.Validation;
 using SFA.DAS.Audit.Types;
 using SFA.DAS.Audit.Web.Plumbing.WebApi;
 
@@ -21,9 +24,26 @@ namespace SFA.DAS.Audit.Web.Controllers
         [HttpPost]
         [VersionedRoute("api/audit", 1)]
         [Route("api/v1/audit")]
-        public Task<IHttpActionResult> WriteAudit(AuditMessage message)
+        public async Task<IHttpActionResult> WriteAudit(AuditMessage message)
         {
-            return Task.FromResult<IHttpActionResult>(Ok());
+            try
+            {
+                await _mediator.SendAsync(new QueueAuditMessageCommand
+                {
+                    Message = message
+                });
+
+                return Ok();
+            }
+            catch (InvalidRequestException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex, $"Unexpected error writing audit - {ex.Message}");
+                return InternalServerError();
+            }
         }
     }
 }
