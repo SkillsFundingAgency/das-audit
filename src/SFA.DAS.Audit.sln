@@ -19,6 +19,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{4057E0AE
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFA.DAS.Audit.Web.UnitTests", "SFA.DAS.Audit.Web.UnitTests\SFA.DAS.Audit.Web.UnitTests.csproj", "{D6534A02-8980-4CA3-8DE7-DD2B060D7DCC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFA.DAS.Audit.Types", "SFA.DAS.Audit.Types\SFA.DAS.Audit.Types.csproj", "{65C87885-651F-4716-B872-170BCC9115DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFA.DAS.Audit.Client", "SFA.DAS.Audit.Client\SFA.DAS.Audit.Client.csproj", "{1FC81287-47B6-46D2-8B35-C183DB5191D0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +45,14 @@ Global
 		{D6534A02-8980-4CA3-8DE7-DD2B060D7DCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6534A02-8980-4CA3-8DE7-DD2B060D7DCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6534A02-8980-4CA3-8DE7-DD2B060D7DCC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65C87885-651F-4716-B872-170BCC9115DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65C87885-651F-4716-B872-170BCC9115DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65C87885-651F-4716-B872-170BCC9115DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65C87885-651F-4716-B872-170BCC9115DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FC81287-47B6-46D2-8B35-C183DB5191D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FC81287-47B6-46D2-8B35-C183DB5191D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FC81287-47B6-46D2-8B35-C183DB5191D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FC81287-47B6-46D2-8B35-C183DB5191D0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
