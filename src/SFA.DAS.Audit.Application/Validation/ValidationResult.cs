@@ -7,7 +7,7 @@ namespace SFA.DAS.Audit.Application.Validation
     {
         public ValidationResult(IEnumerable<ValidationError> errors)
         {
-            Errors = errors.ToArray();
+            Errors = (errors ?? new ValidationError[0]).ToArray();
         }
 
         public ValidationError[] Errors { get; }
