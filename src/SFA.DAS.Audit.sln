@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFA.DAS.Audit.Application.U
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFA.DAS.Audit.Client.Web", "SFA.DAS.Audit.Client.Web\SFA.DAS.Audit.Client.Web.csproj", "{DA9FA2B8-17C3-4699-BA38-316CC5FA661D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFA.DAS.Audit.Client.Web.UnitTests", "SFA.DAS.Audit.Client.Web.UnitTests\SFA.DAS.Audit.Client.Web.UnitTests.csproj", "{E262543E-24B8-4E6B-9093-26A1AAEC0AE2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +73,10 @@ Global
 		{DA9FA2B8-17C3-4699-BA38-316CC5FA661D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA9FA2B8-17C3-4699-BA38-316CC5FA661D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA9FA2B8-17C3-4699-BA38-316CC5FA661D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E262543E-24B8-4E6B-9093-26A1AAEC0AE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E262543E-24B8-4E6B-9093-26A1AAEC0AE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E262543E-24B8-4E6B-9093-26A1AAEC0AE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E262543E-24B8-4E6B-9093-26A1AAEC0AE2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -78,5 +84,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{D6534A02-8980-4CA3-8DE7-DD2B060D7DCC} = {4057E0AE-A234-41FD-A243-342224720B81}
 		{BE998449-0FFE-4E21-A18D-854FCCDF2BA3} = {4057E0AE-A234-41FD-A243-342224720B81}
+		{E262543E-24B8-4E6B-9093-26A1AAEC0AE2} = {4057E0AE-A234-41FD-A243-342224720B81}
 	EndGlobalSection
 EndGlobal
