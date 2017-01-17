@@ -54,6 +54,14 @@
       <HintPath>..\packages\NUnit.3.6.0\lib\net45\nunit.framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="StructureMap, Version=4.2.0.402, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\structuremap.4.2.0.402\lib\net40\StructureMap.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="StructureMap.Net4, Version=4.2.0.402, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\structuremap.4.2.0.402\lib\net40\StructureMap.Net4.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -75,6 +83,7 @@
     <Compile Include="Controllers\AuditControllerTests\AuditControllerTestBase.cs" />
     <Compile Include="Controllers\AuditControllerTests\WhenWritingAudit.cs" />
     <Compile Include="Controllers\HealthCheckControllerTests\WhenGettingStatus.cs" />
+    <Compile Include="DependencyResolution\WhenAddingLogging.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -85,6 +94,10 @@
     <ProjectReference Include="..\SFA.DAS.Audit.Application\SFA.DAS.Audit.Application.csproj">
       <Project>{497CCEE8-BB71-47E4-8F72-A068EB94DB96}</Project>
       <Name>SFA.DAS.Audit.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SFA.DAS.Audit.Infrastructure\SFA.DAS.Audit.Infrastructure.csproj">
+      <Project>{1F8B4312-D933-472F-A278-A976F101FAAB}</Project>
+      <Name>SFA.DAS.Audit.Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\SFA.DAS.Audit.Types\SFA.DAS.Audit.Types.csproj">
       <Project>{65C87885-651F-4716-B872-170BCC9115DA}</Project>
