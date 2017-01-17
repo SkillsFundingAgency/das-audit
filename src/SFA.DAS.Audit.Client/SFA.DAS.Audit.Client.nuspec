@@ -11,11 +11,11 @@
     <description>Client library for accessing DAS Audit service</description>
     <summary>Client library for accessing DAS Audit service</summary>
     <releaseNotes />
-    <!--<dependencies>
+    <dependencies>
       <group targetFramework=".NETFramework4.5">
         <dependency id="Newtonsoft.Json" version="9.0.1"/>
       </group>
-    </dependencies>-->
+    </dependencies>
   </metadata>
   <files>
     <file src="bin\Release\SFA.DAS.Audit.Client.dll" target="lib\net45\SFA.DAS.Audit.Client.dll" />
