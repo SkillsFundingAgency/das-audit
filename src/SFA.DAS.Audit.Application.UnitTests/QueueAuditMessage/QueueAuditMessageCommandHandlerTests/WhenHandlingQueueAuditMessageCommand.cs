@@ -19,7 +19,7 @@ namespace SFA.DAS.Audit.Application.UnitTests.QueueAuditMessage.QueueAuditMessag
         {
             _validator = new Mock<IValidator<QueueAuditMessageCommand>>();
             _validator.Setup(v => v.ValidateAsync(It.IsAny<QueueAuditMessageCommand>()))
-                .ReturnsAsync(new ValidationResult(null));
+                .ReturnsAsync(new ValidationResult());
 
             _messagePublisher = new Mock<IMessagePublisher>();
 
@@ -42,11 +42,10 @@ namespace SFA.DAS.Audit.Application.UnitTests.QueueAuditMessage.QueueAuditMessag
         public void ThenItShouldThrowAnInvalidRequestMessageIfValidatorReturnInvalidResult()
         {
             // Arrange
+            var validationResult = new ValidationResult();
+            validationResult.AddError("Message.Description", "Description is required");
             _validator.Setup(v => v.ValidateAsync(It.IsAny<QueueAuditMessageCommand>()))
-                .ReturnsAsync(new ValidationResult(new[]
-                {
-                    new ValidationError { Property = "Message.Description", Description = "Description is required" }
-                }));
+                .ReturnsAsync(validationResult);
 
             // Act + Assert
             var ex = Assert.ThrowsAsync<InvalidRequestException>(async () => await _handler.Handle(_command));

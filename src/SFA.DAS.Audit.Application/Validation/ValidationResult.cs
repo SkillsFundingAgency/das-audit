@@ -5,12 +5,23 @@ namespace SFA.DAS.Audit.Application.Validation
 {
     public class ValidationResult
     {
-        public ValidationResult(IEnumerable<ValidationError> errors)
+        protected IList<ValidationError> ErrorList;
+        public ValidationResult()
         {
-            Errors = (errors ?? new ValidationError[0]).ToArray();
+            ErrorList = new List<ValidationError>();
         }
 
-        public ValidationError[] Errors { get; }
+        public void AddError(string propertyName)
+        {
+            ErrorList.Add(new ValidationError {Description = $"No value supplied for {propertyName}",Property = propertyName});
+        }
+
+        public void AddError(string propertyName, string description)
+        {
+            ErrorList.Add(new ValidationError {Description = description, Property = propertyName});
+        }
+        
+        public ValidationError[] Errors => ErrorList.ToArray();
 
         public bool IsValid => Errors == null || Errors.Length == 0;
     }
