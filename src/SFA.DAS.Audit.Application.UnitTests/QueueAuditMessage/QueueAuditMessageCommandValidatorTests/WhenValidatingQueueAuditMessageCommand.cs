@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using SFA.DAS.Audit.Application.QueueAuditMessage;
+using SFA.DAS.Audit.Application.Validation;
+using SFA.DAS.Audit.Test.Shared.ObjectMothers;
 using SFA.DAS.Audit.Types;
 
 namespace SFA.DAS.Audit.Application.UnitTests.QueueAuditMessage.QueueAuditMessageCommandValidatorTests
@@ -21,44 +23,7 @@ namespace SFA.DAS.Audit.Application.UnitTests.QueueAuditMessage.QueueAuditMessag
 
             _command = new QueueAuditMessageCommand
             {
-                Message = new AuditMessage
-                {
-                    AffectedEntity = new Entity
-                    {
-                        Type = "TestEntity",
-                        Id = "TEST-ENTITY-1"
-                    },
-                    Description = "CREATED",
-                    Source = "Super System",
-                    ChangedProperties = new List<PropertyUpdate>
-                    {
-                        new PropertyUpdate
-                        {
-                            PropertyName = "Title",
-                            NewValue = "Unit Test"
-                        },
-                        new PropertyUpdate
-                        {
-                            PropertyName = "Description",
-                            NewValue = "Test entity for unit testing"
-                        }
-                    },
-                    ChangeAt = new DateTime(2017, 4, 1, 12, 33, 45),
-                    ChangedBy = new Actor
-                    {
-                        Id = "User1",
-                        EmailAddress = "user.one@unit.tests",
-                        OriginIpAddress = "127.0.0.1"
-                    },
-                    RelatedEntities = new List<Entity>
-                    {
-                        new Entity
-                        {
-                            Type = "DemoEntity",
-                            Id = "DEMO-1"
-                        }
-                    }
-                }
+                Message = AuditMessageMother.Create()
             };
         }
 
@@ -155,6 +120,48 @@ namespace SFA.DAS.Audit.Application.UnitTests.QueueAuditMessage.QueueAuditMessag
 
             //Assert
             Assert.IsNull(actual.Errors.SingleOrDefault(c => c.Property.Equals("AffectedEntity") && c.Description.Equals("No value supplied for AffectedEntity")));
+
+        }
+
+
+        [Test]
+        public async Task ThenTheSourceErrorIsAddedWhenTheComponentPropertyIsNotPopulated()
+        {
+            //Act
+            var actual = await _validator.ValidateAsync(new QueueAuditMessageCommand { Message = new AuditMessage { Source = new Source { Component= "123456" } } });
+
+            //Assert
+            Assert.IsNotNull(actual.Errors.Single(c => c.Property.Equals("Source") && c.Description.Equals("No value supplied for Source")));
+        }
+
+        [Test]
+        public async Task ThenTheSourceErrorIsAddedWhenTheSystemPropertyIsNotPopulated()
+        {
+            //Act
+            var actual = await _validator.ValidateAsync(new QueueAuditMessageCommand { Message = new AuditMessage { Source = new Source { System = "123456" } } });
+
+            //Assert
+            Assert.IsNotNull(actual.Errors.Single(c => c.Property.Equals("Source") && c.Description.Equals("No value supplied for Source")));
+        }
+
+        [Test]
+        public async Task ThenTheSourceErrorIsAddedWhenTheVersionPropertyIsNotPopulated()
+        {
+            //Act
+            var actual = await _validator.ValidateAsync(new QueueAuditMessageCommand { Message = new AuditMessage { Source = new Source { Version = "123456" } } });
+
+            //Assert
+            Assert.IsNotNull(actual.Errors.Single(c => c.Property.Equals("Source") && c.Description.Equals("No value supplied for Source")));
+        }
+
+        [Test]
+        public async Task ThenTheSourceErrorIsNotAddedWhenTheObjectIsPopulated()
+        {
+            //Act
+            var actual = await _validator.ValidateAsync(new QueueAuditMessageCommand { Message = new AuditMessage { Source = new Source { Version = "123456",System = "ret",Component = "werwer"} } });
+
+            //Assert
+            Assert.IsNull(actual.Errors.SingleOrDefault(c => c.Property.Equals("Source") && c.Description.Equals("No value supplied for Source")));
 
         }
 
