@@ -29,11 +29,11 @@ namespace SFA.DAS.Audit.Processor
             await _messageReceiver.RunAsync(cancellationToken);
         }
 
-        private async void MessageReceived(object sender, MessageReceivedEventArgs<AuditMessage> e)
+        private void MessageReceived(object sender, MessageReceivedEventArgs<AuditMessage> e)
         {
             try
             {
-                await _mediator.SendAsync(new SaveAuditMessageCommand {Message = e.Message});
+                _mediator.SendAsync(new SaveAuditMessageCommand {Message = e.Message}).Wait();
 
                 e.Handled = true;
             }

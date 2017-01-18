@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
-
-namespace SFA.DAS.Audit.Application.Mapping
+﻿namespace SFA.DAS.Audit.Application.Mapping
 {
     public class AutoMapperMapper : IMapper
     {
-        private readonly IMapper _mapper;
+        private readonly AutoMapper.IMapper _mapper;
 
-        public AutoMapperMapper(IMapper mapper)
+        public AutoMapperMapper(AutoMapper.IMapper mapper)
         {
             _mapper = mapper;
         }

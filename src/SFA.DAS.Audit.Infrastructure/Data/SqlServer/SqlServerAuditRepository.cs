@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using SFA.DAS.Audit.Domain;
 using SFA.DAS.Audit.Domain.Data;
 using SFA.DAS.Audit.Infrastructure.Data.SqlServer.Entities;
@@ -17,8 +18,11 @@ namespace SFA.DAS.Audit.Infrastructure.Data.SqlServer
             using (var unitOfWork = await StartUnitOfWork())
             {
                 var messageEntity = MapDomainToEntity(message);
+                messageEntity.Id = Guid.NewGuid();
                 await unitOfWork.ExecuteAsync("[dbo].[CreateAuditMessage] @Id, @AffectedEntityType, @AffectedEntityId, @Description, @SourceSystem, @SourceComponent, " +
                                               "@SourceVersion, @ChangedAt, @ChangedById, @ChangedByEmail, @ChangedByOriginIp", messageEntity);
+
+                unitOfWork.CommitChanges();
             }
         }
 

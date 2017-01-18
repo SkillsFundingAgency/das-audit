@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Actor.cs" />
     <Compile Include="AuditMessage.cs" />
+    <Compile Include="Data\DataStorageException.cs" />
     <Compile Include="Data\IWritableAuditRepository.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -35,7 +35,7 @@ namespace SFA.DAS.Audit.Application.UnitTests.QueueAuditMessage.QueueAuditMessag
             await _handler.Handle(_command);
 
             // Assert
-            _messagePublisher.Verify(p => p.PublishAsync(_command), Times.Once);
+            _messagePublisher.Verify(p => p.PublishAsync(_command.Message), Times.Once);
         }
 
         [Test]

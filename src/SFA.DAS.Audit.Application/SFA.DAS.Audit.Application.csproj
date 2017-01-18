@@ -60,6 +60,7 @@
     <Compile Include="Mapping\IMapper.cs" />
     <Compile Include="QueueAuditMessage\QueueAuditMessageCommandValidator.cs" />
     <Compile Include="SaveAuditMessage\SaveAuditMessageCommand.cs" />
+    <Compile Include="SaveAuditMessage\SaveAuditMessageCommandHandler.cs" />
     <Compile Include="Validation\InvalidRequestException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueueAuditMessage\QueueAuditMessageCommand.cs" />

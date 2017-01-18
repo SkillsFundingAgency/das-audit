@@ -24,7 +24,7 @@ namespace SFA.DAS.Audit.Application.QueueAuditMessage
                 throw new InvalidRequestException(validationResult.Errors);
             }
 
-            await _messagePublisher.PublishAsync(message);
+            await _messagePublisher.PublishAsync(message.Message);
 
             return Unit.Value;
         }
