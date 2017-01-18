@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\SqlServer\Entities\AuditMessageEntity.cs" />
     <Compile Include="Data\SqlServer\SqlServerAuditRepository.cs" />
     <Compile Include="Data\SqlServer\SqlServerRepository.cs" />
     <Compile Include="Data\SqlServer\SqlServerUnitOfWork.cs" />
