@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using NUnit.Framework;
 using SFA.DAS.Audit.Application.QueueAuditMessage;
 using SFA.DAS.Audit.Application.Validation;
+using SFA.DAS.Audit.Domain;
 using SFA.DAS.Audit.Test.Shared.ObjectMothers;
-using SFA.DAS.Audit.Types;
 
 namespace SFA.DAS.Audit.Application.UnitTests.QueueAuditMessage.QueueAuditMessageCommandValidatorTests
 {
@@ -23,7 +23,49 @@ namespace SFA.DAS.Audit.Application.UnitTests.QueueAuditMessage.QueueAuditMessag
 
             _command = new QueueAuditMessageCommand
             {
-                Message = AuditMessageMother.Create()
+                Message = new AuditMessage
+                {
+                    AffectedEntity = new Entity
+                    {
+                        Type = "TestEntity",
+                        Id = "TEST-ENTITY-1"
+                    },
+                    Description = "CREATED",
+                    Source = new Source
+                    {
+                        Component = "Test",
+                        System = "More Test",
+                        Version = "2"
+                    },
+                    ChangedProperties = new List<PropertyUpdate>
+                    {
+                        new PropertyUpdate
+                        {
+                            PropertyName = "Title",
+                            NewValue = "Unit Test"
+                        },
+                        new PropertyUpdate
+                        {
+                            PropertyName = "Description",
+                            NewValue = "Test entity for unit testing"
+                        }
+                    },
+                    ChangeAt = new DateTime(2017, 4, 1, 12, 33, 45),
+                    ChangedBy = new Actor
+                    {
+                        Id = "User1",
+                        EmailAddress = "user.one@unit.tests",
+                        OriginIpAddress = "127.0.0.1"
+                    },
+                    RelatedEntities = new List<Entity>
+                    {
+                        new Entity
+                        {
+                            Type = "DemoEntity",
+                            Id = "DEMO-1"
+                        }
+                    }
+                }
             };
         }
 
@@ -43,16 +85,16 @@ namespace SFA.DAS.Audit.Application.UnitTests.QueueAuditMessage.QueueAuditMessag
         public async Task ThenItShouldReturnFalseWhenValidationFailsAndTheErrorDictionaryIsPopulated()
         {
             //Act
-            var actual = await _validator.ValidateAsync(new QueueAuditMessageCommand {Message = new AuditMessage() });
+            var actual = await _validator.ValidateAsync(new QueueAuditMessageCommand { Message = new AuditMessage() });
 
             //Assert
             Assert.IsNotNull(actual);
             Assert.IsFalse(actual.IsValid);
-            Assert.IsNotNull(actual.Errors.Single(c=>c.Property.Equals("AffectedEntity") && c.Description.Equals("No value supplied for AffectedEntity")));
-            Assert.IsNotNull(actual.Errors.Single(c=>c.Property.Equals("Description") && c.Description.Equals("No value supplied for Description")));
-            Assert.IsNotNull(actual.Errors.Single(c=>c.Property.Equals("Source") && c.Description.Equals("No value supplied for Source")));
-            Assert.IsNotNull(actual.Errors.Single(c=>c.Property.Equals("ChangedBy") && c.Description.Equals("No value supplied for ChangedBy")));
-            Assert.IsNotNull(actual.Errors.Single(c=>c.Property.Equals("ChangeAt") && c.Description.Equals("No value supplied for ChangeAt")));
+            Assert.IsNotNull(actual.Errors.Single(c => c.Property.Equals("AffectedEntity") && c.Description.Equals("No value supplied for AffectedEntity")));
+            Assert.IsNotNull(actual.Errors.Single(c => c.Property.Equals("Description") && c.Description.Equals("No value supplied for Description")));
+            Assert.IsNotNull(actual.Errors.Single(c => c.Property.Equals("Source") && c.Description.Equals("No value supplied for Source")));
+            Assert.IsNotNull(actual.Errors.Single(c => c.Property.Equals("ChangedBy") && c.Description.Equals("No value supplied for ChangedBy")));
+            Assert.IsNotNull(actual.Errors.Single(c => c.Property.Equals("ChangeAt") && c.Description.Equals("No value supplied for ChangeAt")));
         }
 
 
@@ -60,7 +102,7 @@ namespace SFA.DAS.Audit.Application.UnitTests.QueueAuditMessage.QueueAuditMessag
         public async Task ThenTheResultIsNotValidWhenTheActorPropertyIsNotCorrectlyPopulated()
         {
             //Act
-            var actual = await _validator.ValidateAsync(new QueueAuditMessageCommand { Message = new AuditMessage {ChangedBy = new Actor {} } });
+            var actual = await _validator.ValidateAsync(new QueueAuditMessageCommand { Message = new AuditMessage { ChangedBy = new Actor { } } });
 
             //Assert
             Assert.IsNotNull(actual.Errors.Single(c => c.Property.Equals("ChangedBy") && c.Description.Equals("No value supplied for ChangedBy")));
@@ -73,7 +115,7 @@ namespace SFA.DAS.Audit.Application.UnitTests.QueueAuditMessage.QueueAuditMessag
         public async Task ThenTheChangeByErrorIsNotAddedWhenThereIsAnIdPopulated()
         {
             //Act
-            var actual = await _validator.ValidateAsync(new QueueAuditMessageCommand { Message = new AuditMessage { ChangedBy = new Actor { Id = "123456"} } });
+            var actual = await _validator.ValidateAsync(new QueueAuditMessageCommand { Message = new AuditMessage { ChangedBy = new Actor { Id = "123456" } } });
 
             //Assert
             Assert.IsNull(actual.Errors.SingleOrDefault(c => c.Property.Equals("ChangedBy") && c.Description.Equals("No value supplied for ChangedBy")));
@@ -116,7 +158,7 @@ namespace SFA.DAS.Audit.Application.UnitTests.QueueAuditMessage.QueueAuditMessag
         public async Task ThenTheAffectedEntityErrorIsNotAddedWhenThereIsAnIdAndTypePopulated()
         {
             //Act
-            var actual = await _validator.ValidateAsync(new QueueAuditMessageCommand { Message = new AuditMessage { AffectedEntity = new Entity { Type = "123456",Id="test" } } });
+            var actual = await _validator.ValidateAsync(new QueueAuditMessageCommand { Message = new AuditMessage { AffectedEntity = new Entity { Type = "123456", Id = "test" } } });
 
             //Assert
             Assert.IsNull(actual.Errors.SingleOrDefault(c => c.Property.Equals("AffectedEntity") && c.Description.Equals("No value supplied for AffectedEntity")));
@@ -128,7 +170,7 @@ namespace SFA.DAS.Audit.Application.UnitTests.QueueAuditMessage.QueueAuditMessag
         public async Task ThenTheSourceErrorIsAddedWhenTheComponentPropertyIsNotPopulated()
         {
             //Act
-            var actual = await _validator.ValidateAsync(new QueueAuditMessageCommand { Message = new AuditMessage { Source = new Source { Component= "123456" } } });
+            var actual = await _validator.ValidateAsync(new QueueAuditMessageCommand { Message = new AuditMessage { Source = new Source { Component = "123456" } } });
 
             //Assert
             Assert.IsNotNull(actual.Errors.Single(c => c.Property.Equals("Source") && c.Description.Equals("No value supplied for Source")));
@@ -158,7 +200,7 @@ namespace SFA.DAS.Audit.Application.UnitTests.QueueAuditMessage.QueueAuditMessag
         public async Task ThenTheSourceErrorIsNotAddedWhenTheObjectIsPopulated()
         {
             //Act
-            var actual = await _validator.ValidateAsync(new QueueAuditMessageCommand { Message = new AuditMessage { Source = new Source { Version = "123456",System = "ret",Component = "werwer"} } });
+            var actual = await _validator.ValidateAsync(new QueueAuditMessageCommand { Message = new AuditMessage { Source = new Source { Version = "123456", System = "ret", Component = "werwer" } } });
 
             //Assert
             Assert.IsNull(actual.Errors.SingleOrDefault(c => c.Property.Equals("Source") && c.Description.Equals("No value supplied for Source")));

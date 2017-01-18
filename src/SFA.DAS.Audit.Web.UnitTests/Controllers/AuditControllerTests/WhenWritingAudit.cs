@@ -26,6 +26,12 @@ namespace SFA.DAS.Audit.Web.UnitTests.Controllers.AuditControllerTests
                     Type = "TestEntity",
                     Id = "TEST-ENTITY-1"
                 },
+                Source = new Source
+                {
+                    System = "Test",
+                    Component = "UnitTests",
+                    Version = "1.2.3"
+                },
                 Description = "CREATED",
                 ChangedProperties = new List<PropertyUpdate>
                 {
@@ -77,7 +83,7 @@ namespace SFA.DAS.Audit.Web.UnitTests.Controllers.AuditControllerTests
             await _controller.WriteAudit(_message);
 
             // Assert
-            _mediator.Verify(m => m.SendAsync(It.Is<QueueAuditMessageCommand>(c => c.Message == _message)), Times.Once);
+            _mediator.Verify(m => m.SendAsync(It.IsAny<QueueAuditMessageCommand>()), Times.Once);
         }
 
         [Test]
@@ -111,7 +117,7 @@ namespace SFA.DAS.Audit.Web.UnitTests.Controllers.AuditControllerTests
             // Assert
             Assert.IsNotNull(actual);
             Assert.IsInstanceOf<BadRequestErrorMessageResult>(actual);
-            Assert.AreEqual("Invalid request.\n\nYou must specify a description", ((BadRequestErrorMessageResult) actual).Message);
+            Assert.AreEqual("Invalid request.\n\nYou must specify a description", ((BadRequestErrorMessageResult)actual).Message);
         }
     }
 }

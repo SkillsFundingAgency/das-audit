@@ -68,7 +68,7 @@
       <Name>SFA.DAS.Audit.Test.Shared</Name>
     </ProjectReference>
     <ProjectReference Include="..\SFA.DAS.Audit.Types\SFA.DAS.Audit.Types.csproj">
-      <Project>{65C87885-651F-4716-B872-170BCC9115DA}</Project>
+      <Project>{65c87885-651f-4716-b872-170bcc9115da}</Project>
       <Name>SFA.DAS.Audit.Types</Name>
     </ProjectReference>
   </ItemGroup>

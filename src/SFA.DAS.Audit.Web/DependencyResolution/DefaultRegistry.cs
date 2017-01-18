@@ -17,18 +17,22 @@
 
 using MediatR;
 using Microsoft.Azure;
+using SFA.DAS.Audit.Web.Plumbing.Mapping;
 using SFA.DAS.Messaging;
 using SFA.DAS.Messaging.AzureStorageQueue;
 using StructureMap;
 using StructureMap.Graph;
 
-namespace SFA.DAS.Audit.Web.DependencyResolution {
-    
-    public class DefaultRegistry : Registry {
-        
+namespace SFA.DAS.Audit.Web.DependencyResolution
+{
+
+    public class DefaultRegistry : Registry
+    {
+
         private const string ServiceNamespace = "SFA.DAS";
 
-        public DefaultRegistry() {
+        public DefaultRegistry()
+        {
             Scan(
                 scan =>
                 {
@@ -36,8 +40,10 @@ namespace SFA.DAS.Audit.Web.DependencyResolution {
                     scan.RegisterConcreteTypesAgainstTheFirstInterface();
                 });
 
+            For<AutoMapper.IMapper>().Use(() => AutoMapperFactory.CreateMapper()).Singleton();
+
             AddMessageService();
-            
+
             RegisterMediator();
         }
 
@@ -54,6 +60,6 @@ namespace SFA.DAS.Audit.Web.DependencyResolution {
             For<MultiInstanceFactory>().Use<MultiInstanceFactory>(ctx => t => ctx.GetAllInstances(t));
             For<IMediator>().Use<Mediator>();
         }
-        
+
     }
 }

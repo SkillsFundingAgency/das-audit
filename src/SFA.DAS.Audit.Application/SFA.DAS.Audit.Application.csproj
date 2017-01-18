@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=5.2.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.5.2.0\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="MediatR, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MediatR.2.1.0\lib\net45\MediatR.dll</HintPath>
       <Private>True</Private>
@@ -52,6 +56,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mapping\AutoMapperMapper.cs" />
+    <Compile Include="Mapping\IMapper.cs" />
     <Compile Include="QueueAuditMessage\QueueAuditMessageCommandValidator.cs" />
     <Compile Include="SaveAuditMessage\SaveAuditMessageCommand.cs" />
     <Compile Include="Validation\InvalidRequestException.cs" />
@@ -62,16 +68,15 @@
     <Compile Include="Validation\IValidator.cs" />
     <Compile Include="Validation\ValidationResult.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\SFA.DAS.Audit.Domain\SFA.DAS.Audit.Domain.csproj">
+      <Project>{D45FF3B6-5A7A-4817-9792-55FFCBD9BA71}</Project>
+      <Name>SFA.DAS.Audit.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SFA.DAS.Audit.Types\SFA.DAS.Audit.Types.csproj">
-      <Project>{65C87885-651F-4716-B872-170BCC9115DA}</Project>
-      <Name>SFA.DAS.Audit.Types</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

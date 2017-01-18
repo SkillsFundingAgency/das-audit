@@ -4,7 +4,7 @@ using MediatR;
 using Moq;
 using NLog;
 using NUnit.Framework;
-using SFA.DAS.Audit.Types;
+using SFA.DAS.Audit.Domain;
 using SFA.DAS.Messaging;
 
 namespace SFA.DAS.Audit.Processor.UnitTests.AuditMessageMonitorTests

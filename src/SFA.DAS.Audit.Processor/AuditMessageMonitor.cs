@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using MediatR;
 using NLog;
 using SFA.DAS.Audit.Application.SaveAuditMessage;
-using SFA.DAS.Audit.Types;
+using SFA.DAS.Audit.Domain;
 using SFA.DAS.Messaging;
 
 namespace SFA.DAS.Audit.Processor

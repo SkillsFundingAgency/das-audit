@@ -43,6 +43,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=5.2.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.5.2.0\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="MediatR, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MediatR.2.1.0\lib\net45\MediatR.dll</HintPath>
       <Private>True</Private>
@@ -201,6 +205,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Plumbing\Mapping\AutoMapperFactory.cs" />
     <Compile Include="Plumbing\WebApi\VersionConstraint.cs" />
     <Compile Include="Plumbing\WebApi\VersionedRouteAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -224,6 +229,10 @@
     <ProjectReference Include="..\SFA.DAS.Audit.Application\SFA.DAS.Audit.Application.csproj">
       <Project>{497CCEE8-BB71-47E4-8F72-A068EB94DB96}</Project>
       <Name>SFA.DAS.Audit.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SFA.DAS.Audit.Domain\SFA.DAS.Audit.Domain.csproj">
+      <Project>{d45ff3b6-5a7a-4817-9792-55ffcbd9ba71}</Project>
+      <Name>SFA.DAS.Audit.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\SFA.DAS.Audit.Infrastructure\SFA.DAS.Audit.Infrastructure.csproj">
       <Project>{1F8B4312-D933-472F-A278-A976F101FAAB}</Project>

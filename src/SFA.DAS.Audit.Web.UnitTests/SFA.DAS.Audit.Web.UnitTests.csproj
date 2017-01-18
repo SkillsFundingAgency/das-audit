@@ -64,6 +64,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
       <Private>True</Private>
@@ -94,6 +95,10 @@
     <ProjectReference Include="..\SFA.DAS.Audit.Application\SFA.DAS.Audit.Application.csproj">
       <Project>{497CCEE8-BB71-47E4-8F72-A068EB94DB96}</Project>
       <Name>SFA.DAS.Audit.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SFA.DAS.Audit.Domain\SFA.DAS.Audit.Domain.csproj">
+      <Project>{d45ff3b6-5a7a-4817-9792-55ffcbd9ba71}</Project>
+      <Name>SFA.DAS.Audit.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\SFA.DAS.Audit.Infrastructure\SFA.DAS.Audit.Infrastructure.csproj">
       <Project>{1F8B4312-D933-472F-A278-A976F101FAAB}</Project>

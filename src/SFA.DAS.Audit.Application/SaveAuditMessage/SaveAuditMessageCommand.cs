@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using SFA.DAS.Audit.Types;
+using SFA.DAS.Audit.Domain;
 
 namespace SFA.DAS.Audit.Application.SaveAuditMessage
 {

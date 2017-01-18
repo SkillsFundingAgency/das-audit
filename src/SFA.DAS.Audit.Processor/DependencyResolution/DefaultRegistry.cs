@@ -17,7 +17,7 @@
 
 using MediatR;
 using Microsoft.Azure;
-using SFA.DAS.Audit.Types;
+using SFA.DAS.Audit.Domain;
 using SFA.DAS.Messaging;
 using SFA.DAS.Messaging.AzureStorageQueue;
 using StructureMap;
