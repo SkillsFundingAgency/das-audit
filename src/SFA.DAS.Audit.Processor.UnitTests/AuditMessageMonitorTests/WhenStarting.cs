@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using MediatR;
 using Moq;
+using NLog;
 using NUnit.Framework;
 using SFA.DAS.Audit.Types;
 using SFA.DAS.Messaging;
@@ -12,6 +13,7 @@ namespace SFA.DAS.Audit.Processor.UnitTests.AuditMessageMonitorTests
     {
         private Mock<IEventingMessageReceiver<AuditMessage>> _messageReceiver;
         private Mock<IMediator> _mediator;
+        private Mock<ILogger> _logger;
         private AuditMessageMonitor _monitor;
 
         [SetUp]
@@ -23,7 +25,9 @@ namespace SFA.DAS.Audit.Processor.UnitTests.AuditMessageMonitorTests
 
             _mediator = new Mock<IMediator>();
 
-            _monitor = new AuditMessageMonitor(_messageReceiver.Object, _mediator.Object);
+            _logger = new Mock<ILogger>();
+
+            _monitor = new AuditMessageMonitor(_messageReceiver.Object, _mediator.Object, _logger.Object);
         }
 
         [Test]

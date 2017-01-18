@@ -1,6 +1,8 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
+using NLog;
 using SFA.DAS.Audit.Application.SaveAuditMessage;
 using SFA.DAS.Audit.Types;
 using SFA.DAS.Messaging;
@@ -11,13 +13,15 @@ namespace SFA.DAS.Audit.Processor
     {
         private readonly IEventingMessageReceiver<AuditMessage> _messageReceiver;
         private readonly IMediator _mediator;
+        private readonly ILogger _logger;
 
-        public AuditMessageMonitor(IEventingMessageReceiver<AuditMessage> messageReceiver, IMediator mediator)
+        public AuditMessageMonitor(IEventingMessageReceiver<AuditMessage> messageReceiver, IMediator mediator, ILogger logger)
         {
             _messageReceiver = messageReceiver;
             _messageReceiver.MessageReceived += MessageReceived;
 
             _mediator = mediator;
+            _logger = logger;
         }
 
         public async Task RunAsync(CancellationToken cancellationToken)
@@ -27,9 +31,16 @@ namespace SFA.DAS.Audit.Processor
 
         private async void MessageReceived(object sender, MessageReceivedEventArgs<AuditMessage> e)
         {
-            await _mediator.SendAsync(new SaveAuditMessageCommand { Message = e.Message });
+            try
+            {
+                await _mediator.SendAsync(new SaveAuditMessageCommand {Message = e.Message});
 
-            e.Handled = true;
+                e.Handled = true;
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex, $"Failed to save audit message - {ex.Message}");
+            }
         }
     }
 }
