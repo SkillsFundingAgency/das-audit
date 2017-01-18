@@ -77,6 +77,10 @@
       <Project>{497CCEE8-BB71-47E4-8F72-A068EB94DB96}</Project>
       <Name>SFA.DAS.Audit.Application</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SFA.DAS.Audit.Test.Shared\SFA.DAS.Audit.Test.Shared.csproj">
+      <Project>{0C1DD267-D2FB-4B4B-A9E0-5B2E85A1E6F4}</Project>
+      <Name>SFA.DAS.Audit.Test.Shared</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SFA.DAS.Audit.Types\SFA.DAS.Audit.Types.csproj">
       <Project>{65C87885-651F-4716-B872-170BCC9115DA}</Project>
       <Name>SFA.DAS.Audit.Types</Name>
