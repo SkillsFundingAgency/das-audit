@@ -19,7 +19,12 @@ namespace SFA.DAS.Audit.Test.Shared.ObjectMothers
                     Id = "TEST-ENTITY-1"
                 },
                 Description = "CREATED",
-                Source = "Super System",
+                Source = new Source
+                {
+                    Component = "Test",
+                    System = "More Test",
+                    Version = "2"
+                },
                 ChangedProperties = new List<PropertyUpdate>
                 {
                     new PropertyUpdate

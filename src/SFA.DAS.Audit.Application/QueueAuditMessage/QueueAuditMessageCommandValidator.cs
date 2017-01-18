@@ -21,7 +21,7 @@ namespace SFA.DAS.Audit.Application.QueueAuditMessage
             {
                 validationResult.AddError(nameof(message.Message.Description));
             }
-            if (string.IsNullOrEmpty(message.Message.Source))
+            if (string.IsNullOrEmpty(message.Message.Source?.System) || string.IsNullOrEmpty(message.Message.Source?.Component) || string.IsNullOrEmpty(message.Message.Source?.Version))
             {
                 validationResult.AddError(nameof(message.Message.Source));
             }

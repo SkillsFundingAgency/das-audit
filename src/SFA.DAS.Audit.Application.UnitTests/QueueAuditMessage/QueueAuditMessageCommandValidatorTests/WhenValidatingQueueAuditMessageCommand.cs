@@ -123,6 +123,48 @@ namespace SFA.DAS.Audit.Application.UnitTests.QueueAuditMessage.QueueAuditMessag
 
         }
 
+
+        [Test]
+        public async Task ThenTheSourceErrorIsAddedWhenTheComponentPropertyIsNotPopulated()
+        {
+            //Act
+            var actual = await _validator.ValidateAsync(new QueueAuditMessageCommand { Message = new AuditMessage { Source = new Source { Component= "123456" } } });
+
+            //Assert
+            Assert.IsNotNull(actual.Errors.Single(c => c.Property.Equals("Source") && c.Description.Equals("No value supplied for Source")));
+        }
+
+        [Test]
+        public async Task ThenTheSourceErrorIsAddedWhenTheSystemPropertyIsNotPopulated()
+        {
+            //Act
+            var actual = await _validator.ValidateAsync(new QueueAuditMessageCommand { Message = new AuditMessage { Source = new Source { System = "123456" } } });
+
+            //Assert
+            Assert.IsNotNull(actual.Errors.Single(c => c.Property.Equals("Source") && c.Description.Equals("No value supplied for Source")));
+        }
+
+        [Test]
+        public async Task ThenTheSourceErrorIsAddedWhenTheVersionPropertyIsNotPopulated()
+        {
+            //Act
+            var actual = await _validator.ValidateAsync(new QueueAuditMessageCommand { Message = new AuditMessage { Source = new Source { Version = "123456" } } });
+
+            //Assert
+            Assert.IsNotNull(actual.Errors.Single(c => c.Property.Equals("Source") && c.Description.Equals("No value supplied for Source")));
+        }
+
+        [Test]
+        public async Task ThenTheSourceErrorIsNotAddedWhenTheObjectIsPopulated()
+        {
+            //Act
+            var actual = await _validator.ValidateAsync(new QueueAuditMessageCommand { Message = new AuditMessage { Source = new Source { Version = "123456",System = "ret",Component = "werwer"} } });
+
+            //Assert
+            Assert.IsNull(actual.Errors.SingleOrDefault(c => c.Property.Equals("Source") && c.Description.Equals("No value supplied for Source")));
+
+        }
+
         [Test]
         public async Task ThenItShouldReturnFalseWhenTheQueueMessageIsNullAndTheValidationFailsAndTheErrorDictionaryIsPopulated()
         {

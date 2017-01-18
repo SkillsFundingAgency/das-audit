@@ -7,7 +7,7 @@ namespace SFA.DAS.Audit.Types
     {
         public Entity AffectedEntity { get; set; }
         public string Description { get; set; } 
-        public string Source { get; set; } 
+        public Source Source { get; set; } 
         public List<PropertyUpdate> ChangedProperties { get; set; }
         public DateTime ChangeAt { get; set; }
         public Actor ChangedBy { get; set; }
