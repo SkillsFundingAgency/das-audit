@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright file="StructureMapWebApiDependencyScope.cs" company="Web Advanced">
+// <copyright file="IoC.cs" company="Web Advanced">
 // Copyright 2012 Web Advanced (www.webadvanced.com)
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -15,18 +15,21 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System.Web.Http.Dependencies;
+
+using SFA.DAS.Audit.Infrastructure.DependencyResolution;
 using StructureMap;
 
-namespace SFA.DAS.Audit.Web.DependencyResolution
+namespace SFA.DAS.Audit.Processor.DependencyResolution
 {
-    /// <summary>
-    /// The structure map web api dependency scope.
-    /// </summary>
-    public class StructureMapWebApiDependencyScope : StructureMapDependencyScope, IDependencyScope
+    public static class IoC
     {
-        public StructureMapWebApiDependencyScope(IContainer container)
-            : base(container) {
+        public static IContainer Initialize()
+        {
+            return new Container(c =>
+            {
+                c.AddRegistry<DefaultRegistry>();
+                c.Policies.Add<LoggingPolicy>();
+            });
         }
     }
 }

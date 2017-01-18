@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using SFA.DAS.Audit.Application.QueueAuditMessage;
-using SFA.DAS.Audit.Application.Validation;
 using SFA.DAS.Audit.Types;
 
 namespace SFA.DAS.Audit.Application.UnitTests.QueueAuditMessage.QueueAuditMessageCommandValidatorTests

@@ -26,6 +26,9 @@
   <WorkerRole name="SFA.DAS.Audit.Processor" vmsize="Small">
     <ConfigurationSettings>
       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" />
+      <Setting name="AzureStorageQueueServiceConnectionString" />
+      <Setting name="LoggingRedisConnectionString" />
+      <Setting name="LoggingRedisKey" />
     </ConfigurationSettings>
   </WorkerRole>
 </ServiceDefinition>

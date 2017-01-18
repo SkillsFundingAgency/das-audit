@@ -1,8 +1,8 @@
 using System.Diagnostics;
 using System.Net;
 using System.Threading;
-using System.Threading.Tasks;
 using Microsoft.WindowsAzure.ServiceRuntime;
+using SFA.DAS.Audit.Processor.DependencyResolution;
 
 namespace SFA.DAS.Audit.Processor
 {
@@ -17,7 +17,10 @@ namespace SFA.DAS.Audit.Processor
 
             try
             {
-                this.RunAsync(this.cancellationTokenSource.Token).Wait();
+                var container = IoC.Initialize();
+
+                var monitor = container.GetInstance<AuditMessageMonitor>();
+                monitor.RunAsync(this.cancellationTokenSource.Token).Wait();
             }
             finally
             {
@@ -50,16 +53,6 @@ namespace SFA.DAS.Audit.Processor
             base.OnStop();
 
             Trace.TraceInformation("SFA.DAS.Audit.Processor has stopped");
-        }
-
-        private async Task RunAsync(CancellationToken cancellationToken)
-        {
-            // TODO: Replace the following with your own logic.
-            while (!cancellationToken.IsCancellationRequested)
-            {
-                Trace.TraceInformation("Working");
-                await Task.Delay(1000);
-            }
         }
     }
 }
