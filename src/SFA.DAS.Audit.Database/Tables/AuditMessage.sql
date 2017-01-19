@@ -10,5 +10,10 @@
 	[ChangedAt] [datetime] NOT NULL,
 	[ChangedById] [varchar](150) NULL,
 	[ChangedByEmail] [varchar](255) NULL,
-	[ChangedByOriginIp] [varchar](50) NULL
+	[ChangedByOriginIp] [varchar](50) NULL,
+	CONSTRAINT [PK_AuditMessage] PRIMARY KEY NONCLUSTERED (Id)
 ) 
+GO
+
+CREATE CLUSTERED INDEX [IX_AuditMessage_AffectedEntity] ON [dbo].[AuditMessage] (AffectedEntityType, AffectedEntityId)
+GO
