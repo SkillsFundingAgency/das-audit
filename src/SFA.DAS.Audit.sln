@@ -113,7 +113,6 @@ Global
 		{7928C168-4CB6-4A2D-A6A4-0CBEB454D368}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7928C168-4CB6-4A2D-A6A4-0CBEB454D368}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{7928C168-4CB6-4A2D-A6A4-0CBEB454D368}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7928C168-4CB6-4A2D-A6A4-0CBEB454D368}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7928C168-4CB6-4A2D-A6A4-0CBEB454D368}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
