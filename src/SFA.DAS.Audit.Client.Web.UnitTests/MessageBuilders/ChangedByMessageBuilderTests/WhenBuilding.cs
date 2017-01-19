@@ -36,7 +36,7 @@ namespace SFA.DAS.Audit.Client.Web.UnitTests.MessageBuilders.ChangedByMessageBui
                 {
                     new Claim(ClaimTypes.NameIdentifier, UserId),
                     new Claim(ClaimTypes.Email, UserEmail)
-                })));
+                }, "UnitTests")));
 
             _builder = new ChangedByMessageBuilder(_httpContext.Object);
 
@@ -86,7 +86,7 @@ namespace SFA.DAS.Audit.Client.Web.UnitTests.MessageBuilders.ChangedByMessageBui
                 {
                     new Claim(WebMessageBuilders.UserIdClaim, UserId),
                     new Claim(ClaimTypes.Email, UserEmail)
-                })));
+                }, "UnitTests")));
 
             // Act
             _builder.Build(_message);
@@ -154,7 +154,7 @@ namespace SFA.DAS.Audit.Client.Web.UnitTests.MessageBuilders.ChangedByMessageBui
                 {
                     new Claim(ClaimTypes.NameIdentifier, UserId),
                     new Claim(WebMessageBuilders.UserEmailClaim, UserEmail)
-                })));
+                }, "UnitTests")));
 
             // Act
             _builder.Build(_message);
