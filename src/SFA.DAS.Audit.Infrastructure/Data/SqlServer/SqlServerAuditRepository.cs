@@ -22,6 +22,18 @@ namespace SFA.DAS.Audit.Infrastructure.Data.SqlServer
                 await unitOfWork.ExecuteAsync("[dbo].[CreateAuditMessage] @Id, @AffectedEntityType, @AffectedEntityId, @Description, @SourceSystem, @SourceComponent, " +
                                               "@SourceVersion, @ChangedAt, @ChangedById, @ChangedByEmail, @ChangedByOriginIp", messageEntity);
 
+                foreach (var entity in message.RelatedEntities)
+                {
+                    await unitOfWork.ExecuteAsync("[dbo].[CreateRelatedEntity] @EntityType, @EntityId, @MessageId",
+                        new { EntityType = entity.Type, EntityId = entity.Id, MessageId = messageEntity.Id });
+                }
+
+                foreach (var update in message.ChangedProperties)
+                {
+                    await unitOfWork.ExecuteAsync("[dbo].[CreateChangedProperty] @PropertyName, @NewValue, @MessageId",
+                        new { PropertyName = update.PropertyName, NewValue = update.NewValue, MessageId = messageEntity.Id });
+                }
+
                 unitOfWork.CommitChanges();
             }
         }
