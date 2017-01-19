@@ -19,7 +19,7 @@ namespace SFA.DAS.Audit.Infrastructure.Data.SqlServer
             {
                 var messageEntity = MapDomainToEntity(message);
                 messageEntity.Id = Guid.NewGuid();
-                await unitOfWork.ExecuteAsync("[dbo].[CreateAuditMessage] @Id, @AffectedEntityType, @AffectedEntityId, @Description, @SourceSystem, @SourceComponent, " +
+                await unitOfWork.ExecuteAsync("[dbo].[CreateAuditMessage] @Id, @AffectedEntityType, @AffectedEntityId, @Category, @Description, @SourceSystem, @SourceComponent, " +
                                               "@SourceVersion, @ChangedAt, @ChangedById, @ChangedByEmail, @ChangedByOriginIp", messageEntity);
 
                 foreach (var entity in message.RelatedEntities)
@@ -46,6 +46,7 @@ namespace SFA.DAS.Audit.Infrastructure.Data.SqlServer
             {
                 AffectedEntityId = message.AffectedEntity.Id,
                 AffectedEntityType = message.AffectedEntity.Type,
+                Category = message.Category,
                 Description = message.Description,
                 SourceSystem = message.Source.System,
                 SourceComponent = message.Source.Component,
