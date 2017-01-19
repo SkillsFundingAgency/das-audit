@@ -72,5 +72,13 @@ namespace SFA.DAS.Audit.Types
                 NewValue = newValue.ToString(CultureInfo.CurrentCulture)
             };
         }
+        public static PropertyUpdate FromBool(string propertyName, bool newValue)
+        {
+            return new PropertyUpdate
+            {
+                PropertyName = propertyName,
+                NewValue = newValue.ToString().ToLower()
+            };
+        }
     }
 }
