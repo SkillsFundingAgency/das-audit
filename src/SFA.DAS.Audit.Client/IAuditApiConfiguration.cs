@@ -1,32 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SFA.DAS.Audit.Client
+﻿namespace SFA.DAS.Audit.Client
 {
-    public class AuditApiConfiguration : IAuditApiConfiguration
+    public interface IAuditApiConfiguration
     {
-        public string ApiBaseUrl { get; set; }
+        string ApiBaseUrl { get; set; }
+
         /// <summary>
         /// The clientId configured in Azure AD
         /// </summary>
         /// <example>97A08E90-925F-45C5-BDC9-AE2C249137A6</example>
-        public string ClientId { get; set; }
+        string ClientId { get; set; }
+
         /// <summary>
         /// The code generated in Azure AD from your password - base 64 encoded
         /// </summary>
-        public string ClientSecret { get; set; }
+        string ClientSecret { get; set; }
+
         /// <summary>
         /// The location of the resource that you are trying to access in Azure AD
         /// </summary>
-        public string IdentifierUri { get; set; }
+        string IdentifierUri { get; set; }
 
         /// <summary>
         /// The tenant part of the authority url
         /// </summary>
         /// <example>xxxx.omicrosoft.com</example>
-        public string Tenant { get; set; }
+        string Tenant { get; set; }
     }
 }
