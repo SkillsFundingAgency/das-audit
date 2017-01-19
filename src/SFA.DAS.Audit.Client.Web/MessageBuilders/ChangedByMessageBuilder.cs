@@ -31,7 +31,7 @@ namespace SFA.DAS.Audit.Client.Web.MessageBuilders
         private void SetUserIdAndEmail(Actor actor)
         {
             var user = _httpContext.User as ClaimsPrincipal;
-            if (user == null)
+            if (user == null || user.Identity == null || !user.Identity.IsAuthenticated)
             {
                 return;
             }
