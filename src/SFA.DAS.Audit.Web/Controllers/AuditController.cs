@@ -42,6 +42,7 @@ namespace SFA.DAS.Audit.Web.Controllers
             }
             catch (InvalidRequestException ex)
             {
+                _logger.Info(ex, $"Bad request made to WriteAudit endpoint - {ex.Message}");
                 return BadRequest(ex.Message);
             }
             catch (Exception ex)
