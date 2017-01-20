@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
@@ -40,8 +37,9 @@ namespace SFA.DAS.Audit.Client
             {
                 client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", authenticationResult.AccessToken);
                 client.DefaultRequestHeaders.Add("api-version", "1");
+                client.DefaultRequestHeaders.Add("accept", "application/json");
 
-                var response = await client.PostAsync(url, new StringContent(JsonConvert.SerializeObject(message)));
+                var response = await client.PostAsync(url, new StringContent(JsonConvert.SerializeObject(message), Encoding.UTF8, "application/json"));
                 response.EnsureSuccessStatusCode();
             }
         }
