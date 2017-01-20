@@ -29,10 +29,6 @@ namespace SFA.DAS.Audit.Application.QueueAuditMessage
             {
                 validationResult.AddError(nameof(message.Message.AffectedEntity));
             }
-            if (string.IsNullOrEmpty(message.Message.ChangedBy?.Id) && string.IsNullOrEmpty(message.Message.ChangedBy?.EmailAddress))
-            {
-                validationResult.AddError(nameof(message.Message.ChangedBy));
-            }
             if (message.Message.ChangeAt == DateTime.MinValue)
             {
                 validationResult.AddError(nameof(message.Message.ChangeAt));

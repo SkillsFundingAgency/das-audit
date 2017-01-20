@@ -93,46 +93,9 @@ namespace SFA.DAS.Audit.Application.UnitTests.QueueAuditMessage.QueueAuditMessag
             Assert.IsNotNull(actual.Errors.Single(c => c.Property.Equals("AffectedEntity") && c.Description.Equals("No value supplied for AffectedEntity")));
             Assert.IsNotNull(actual.Errors.Single(c => c.Property.Equals("Description") && c.Description.Equals("No value supplied for Description")));
             Assert.IsNotNull(actual.Errors.Single(c => c.Property.Equals("Source") && c.Description.Equals("No value supplied for Source")));
-            Assert.IsNotNull(actual.Errors.Single(c => c.Property.Equals("ChangedBy") && c.Description.Equals("No value supplied for ChangedBy")));
             Assert.IsNotNull(actual.Errors.Single(c => c.Property.Equals("ChangeAt") && c.Description.Equals("No value supplied for ChangeAt")));
         }
 
-
-        [Test]
-        public async Task ThenTheResultIsNotValidWhenTheActorPropertyIsNotCorrectlyPopulated()
-        {
-            //Act
-            var actual = await _validator.ValidateAsync(new QueueAuditMessageCommand { Message = new AuditMessage { ChangedBy = new Actor { } } });
-
-            //Assert
-            Assert.IsNotNull(actual.Errors.Single(c => c.Property.Equals("ChangedBy") && c.Description.Equals("No value supplied for ChangedBy")));
-
-        }
-
-
-
-        [Test]
-        public async Task ThenTheChangeByErrorIsNotAddedWhenThereIsAnIdPopulated()
-        {
-            //Act
-            var actual = await _validator.ValidateAsync(new QueueAuditMessageCommand { Message = new AuditMessage { ChangedBy = new Actor { Id = "123456" } } });
-
-            //Assert
-            Assert.IsNull(actual.Errors.SingleOrDefault(c => c.Property.Equals("ChangedBy") && c.Description.Equals("No value supplied for ChangedBy")));
-
-        }
-
-
-        [Test]
-        public async Task ThenTheChangeByErrorIsNotAddedWhenThereIsAnEmailPopulated()
-        {
-            //Act
-            var actual = await _validator.ValidateAsync(new QueueAuditMessageCommand { Message = new AuditMessage { ChangedBy = new Actor { EmailAddress = "123456" } } });
-
-            //Assert
-            Assert.IsNull(actual.Errors.SingleOrDefault(c => c.Property.Equals("ChangedBy") && c.Description.Equals("No value supplied for ChangedBy")));
-
-        }
 
         [Test]
         public async Task ThenTheEntityErrorIsAddedWhenTheEntityTypeIsNotPopulated()
