@@ -10,6 +10,17 @@ namespace SFA.DAS.Audit.Client
     {
         private readonly string _outputDirectory;
 
+        public StubAuditApiClient()
+        {
+            var appDataFolder = !string.IsNullOrEmpty((string)AppDomain.CurrentDomain.GetData("DataDirectory"))
+                ? (string)AppDomain.CurrentDomain.GetData("DataDirectory")
+                : Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "App_Data");
+
+            appDataFolder = Path.Combine(appDataFolder, "audit");
+
+            _outputDirectory = appDataFolder;
+        }
+
         public StubAuditApiClient(string outputDirectory)
         {
             _outputDirectory = outputDirectory;
