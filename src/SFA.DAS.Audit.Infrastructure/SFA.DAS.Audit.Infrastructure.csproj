@@ -60,6 +60,7 @@
     <Compile Include="Data\SqlServer\SqlServerRepository.cs" />
     <Compile Include="Data\SqlServer\SqlServerUnitOfWork.cs" />
     <Compile Include="DependencyResolution\LoggingPolicy.cs" />
+    <Compile Include="Logging\LoggingConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -7,6 +7,7 @@
       <Setting name="AzureStorageQueueServiceConnectionString" value="__AzureStorageQueueServiceConnectionString__" />
       <Setting name="LoggingRedisConnectionString" value="__LoggingRedisConnectionString__" />
       <Setting name="LoggingRedisKey" value="__LoggingRedisKey__" />
+      <Setting name="LogLevel" value="__LogLevel__" />
     </ConfigurationSettings>
     <Certificates>
       <Certificate name="Certificate1" thumbprint="54A2AD0A4B50AB1F2303AA7A0387A18A538F34CB" thumbprintAlgorithm="sha1" />
