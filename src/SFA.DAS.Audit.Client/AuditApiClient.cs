@@ -7,9 +7,9 @@ namespace SFA.DAS.Audit.Client
     public class AuditApiClient : IAuditApiClient
     {
         private readonly SecureHttpClient _httpClient;
-        private readonly AuditApiConfiguration _configuration;
+        private readonly IAuditApiConfiguration _configuration;
 
-        public AuditApiClient(AuditApiConfiguration configuration)
+        public AuditApiClient(IAuditApiConfiguration configuration)
         {
             if (configuration == null)
             {
@@ -40,7 +40,7 @@ namespace SFA.DAS.Audit.Client
             _httpClient = new SecureHttpClient(configuration);
         }
 
-        internal AuditApiClient(AuditApiConfiguration configuration, SecureHttpClient httpClient)
+        internal AuditApiClient(IAuditApiConfiguration configuration, SecureHttpClient httpClient)
         {
             _configuration = configuration;
             _httpClient = httpClient;

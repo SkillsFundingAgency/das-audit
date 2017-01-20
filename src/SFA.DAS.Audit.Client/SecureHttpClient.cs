@@ -9,9 +9,9 @@ namespace SFA.DAS.Audit.Client
 {
     internal class SecureHttpClient
     {
-        private readonly AuditApiConfiguration _configuration;
+        private readonly IAuditApiConfiguration _configuration;
 
-        public SecureHttpClient(AuditApiConfiguration configuration)
+        public SecureHttpClient(IAuditApiConfiguration configuration)
         {
             _configuration = configuration;
         }
