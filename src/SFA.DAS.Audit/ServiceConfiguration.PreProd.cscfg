@@ -9,7 +9,7 @@
       <Setting name="LoggingRedisKey" value="__LoggingRedisKey__" />
     </ConfigurationSettings>
     <Certificates>
-      <Certificate name="Certificate1" thumbprint="87A28DF77BBA73983918DF4288A132588AE820F4" thumbprintAlgorithm="sha1" />
+      <Certificate name="Certificate1" thumbprint="54A2AD0A4B50AB1F2303AA7A0387A18A538F34CB" thumbprintAlgorithm="sha1" />
     </Certificates>
   </Role>
   <Role name="SFA.DAS.Audit.Processor">
