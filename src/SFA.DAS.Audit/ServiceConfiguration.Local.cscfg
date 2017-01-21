@@ -8,6 +8,7 @@
       <Setting name="LoggingRedisConnectionString" value="" />
       <Setting name="LoggingRedisKey" value="" />
       <Setting name="LogLevel" value="Debug" />
+      <Setting name="EnvironmentName" value="LOCAL" />
     </ConfigurationSettings>
     <Certificates>
       <Certificate name="Certificate1" thumbprint="FE14C6E906B1E94E93C6AF8FA113EA1221D5DE9C" thumbprintAlgorithm="sha1" />
@@ -21,6 +22,7 @@
       <Setting name="AzureStorageQueueServiceConnectionString" value="UseDevelopmentStorage=true" />
       <Setting name="LoggingRedisConnectionString" value="" />
       <Setting name="LoggingRedisKey" value="" />
+      <Setting name="EnvironmentName" value="LOCAL" />
     </ConfigurationSettings>
   </Role>
 </ServiceConfiguration>
