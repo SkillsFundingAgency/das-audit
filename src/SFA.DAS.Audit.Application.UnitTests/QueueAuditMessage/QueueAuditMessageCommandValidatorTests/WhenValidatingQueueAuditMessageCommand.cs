@@ -30,7 +30,8 @@ namespace SFA.DAS.Audit.Application.UnitTests.QueueAuditMessage.QueueAuditMessag
                         Type = "TestEntity",
                         Id = "TEST-ENTITY-1"
                     },
-                    Description = "CREATED",
+                    Category = "CREATED",
+                    Description = "Test entity was created in tests",
                     Source = new Source
                     {
                         Component = "Test",
@@ -94,6 +95,17 @@ namespace SFA.DAS.Audit.Application.UnitTests.QueueAuditMessage.QueueAuditMessag
             Assert.IsNotNull(actual.Errors.Single(c => c.Property.Equals("Description") && c.Description.Equals("No value supplied for Description")));
             Assert.IsNotNull(actual.Errors.Single(c => c.Property.Equals("Source") && c.Description.Equals("No value supplied for Source")));
             Assert.IsNotNull(actual.Errors.Single(c => c.Property.Equals("ChangeAt") && c.Description.Equals("No value supplied for ChangeAt")));
+        }
+
+
+        [Test]
+        public async Task ThenTheEntityErrorIsAddedWhenTheCategoryIsNotPopulated()
+        {
+            //Act
+            var actual = await _validator.ValidateAsync(new QueueAuditMessageCommand { Message = new AuditMessage { Category = "" } });
+
+            //Assert
+            Assert.IsNotNull(actual.Errors.Single(c => c.Property.Equals("Category") && c.Description.Equals("No value supplied for Category")));
         }
 
 

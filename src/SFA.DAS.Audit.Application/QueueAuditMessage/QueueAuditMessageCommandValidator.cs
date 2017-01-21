@@ -17,6 +17,10 @@ namespace SFA.DAS.Audit.Application.QueueAuditMessage
                 return Task.FromResult(validationResult);
             }
 
+            if (string.IsNullOrEmpty(message.Message.Category))
+            {
+                validationResult.AddError(nameof(message.Message.Category));
+            }
             if (string.IsNullOrEmpty(message.Message.Description))
             {
                 validationResult.AddError(nameof(message.Message.Description));
