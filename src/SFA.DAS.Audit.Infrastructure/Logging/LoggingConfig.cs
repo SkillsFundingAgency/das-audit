@@ -20,7 +20,7 @@ namespace SFA.DAS.Audit.Infrastructure.Logging
             var targets = LogManager.Configuration.AllTargets.Where(t => t is DatabaseTarget).Cast<DatabaseTarget>().ToArray();
             foreach (var target in targets)
             {
-                target.ConnectionString = CloudConfigurationManager.GetSetting("LoggingConnectionString");
+                target.ConnectionString = CloudConfigurationManager.GetSetting("LoggingRedisConnectionString");
             }
         }
 
