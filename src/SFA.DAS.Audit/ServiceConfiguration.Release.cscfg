@@ -9,6 +9,7 @@
       <Setting name="LoggingRedisKey" value="__LoggingRedisKey__" />
       <Setting name="LogLevel" value="__LogLevel__" />
       <Setting name="EnvironmentName" value="__EnvironmentName__" />
+      <Setting name="InstrumentationKey" value="__InstrumentationKey__"/>
     </ConfigurationSettings>
     <Certificates>
       <Certificate name="Certificate1" thumbprint="48BE4BD69C1402B3E11B7DE31614FD029FDC1D6F" thumbprintAlgorithm="sha1" />
@@ -23,6 +24,7 @@
       <Setting name="LoggingRedisConnectionString" value="__LoggingRedisConnectionString__" />
       <Setting name="LoggingRedisKey" value="__LoggingRedisKey__" />
       <Setting name="EnvironmentName" value="__EnvironmentName__" />
+      <Setting name="InstrumentationKey" value="__InstrumentationKey__"/>
     </ConfigurationSettings>
   </Role>
   <NetworkConfiguration>

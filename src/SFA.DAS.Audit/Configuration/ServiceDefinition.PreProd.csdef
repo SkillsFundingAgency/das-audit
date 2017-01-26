@@ -16,6 +16,7 @@
       <Setting name="LoggingRedisKey" />
       <Setting name="LogLevel" />
       <Setting name="EnvironmentName" />
+      <Setting name="InstrumentationKey"/>
     </ConfigurationSettings>
     <Endpoints>
       <InputEndpoint name="Endpoint1" protocol="http" port="80" loadBalancer="das-pp-adt-ilb"/>
@@ -33,6 +34,7 @@
       <Setting name="LoggingRedisConnectionString" />
       <Setting name="LoggingRedisKey" />
       <Setting name="EnvironmentName" />
+      <Setting name="InstrumentationKey"/>
     </ConfigurationSettings>
   </WorkerRole>
 </ServiceDefinition>
