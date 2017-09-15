@@ -11,6 +11,7 @@ using SFA.DAS.Audit.Web.Plumbing.WebApi;
 
 namespace SFA.DAS.Audit.Web.Controllers
 {
+    [Authorize]
     public class AuditController : ApiController
     {
         private readonly IMapper _mapper;
