@@ -14,7 +14,7 @@
       <Setting name="idaTenant"  value="__idaTenant__"/>
     </ConfigurationSettings>
     <Certificates>
-      <Certificate name="Certificate1" thumbprint="F2F2AA69ACCCC0BF9355C87A63A1186301FF8567" thumbprintAlgorithm="sha1" />
+      <Certificate name="Certificate1" thumbprint="D4B7EBCE1013CBB10A6DD74D1A20E2C9A69107A2" thumbprintAlgorithm="sha1" />
     </Certificates>
   </Role>
   <Role name="SFA.DAS.Audit.Processor">
