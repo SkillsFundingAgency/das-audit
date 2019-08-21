@@ -3,7 +3,6 @@
   <Role name="SFA.DAS.Audit.Web">
     <Instances count="1" />
     <ConfigurationSettings>
-      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
       <Setting name="AzureStorageQueueServiceConnectionString" value="UseDevelopmentStorage=true" />
       <Setting name="LoggingRedisConnectionString" value="" />
       <Setting name="LoggingRedisKey" value="" />
@@ -20,7 +19,6 @@
   <Role name="SFA.DAS.Audit.Processor">
     <Instances count="1" />
     <ConfigurationSettings>
-      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
       <Setting name="AuditRepositoryConnectionString" value="server=.;database=SFA.DAS.Audit;trusted_connection=true;"/>
       <Setting name="AzureStorageQueueServiceConnectionString" value="UseDevelopmentStorage=true" />
       <Setting name="LoggingRedisConnectionString" value="" />
