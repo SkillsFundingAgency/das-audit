@@ -253,3 +253,6 @@ src/tools/**/*.*
 # JetBrains Rider
 .idea/
 *.sln.iml
+
+# jfm
+*.jfm
