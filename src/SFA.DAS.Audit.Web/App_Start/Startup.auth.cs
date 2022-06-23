@@ -12,8 +12,8 @@ namespace SFA.DAS.Audit.Web
                new WindowsAzureActiveDirectoryBearerAuthenticationOptions
                {
                    TokenValidationParameters = new System.IdentityModel.Tokens.TokenValidationParameters
-                   {
-                       ValidAudience = CloudConfigurationManager.GetSetting("idaAudience"),
+                   {                       
+                       ValidAudiences = CloudConfigurationManager.GetSetting("idaAudience").Split(','),
                        RoleClaimType = "http://schemas.microsoft.com/ws/2008/06/identity/claims/role"
                    },
                    Tenant = CloudConfigurationManager.GetSetting("idaTenant")
