@@ -19,18 +19,6 @@ namespace SFA.DAS.Audit.Client
             {
                 throw new NullReferenceException("configuration.ApiBaseUrl is not specified");
             }
-            if (string.IsNullOrEmpty(configuration.ClientId))
-            {
-                throw new NullReferenceException("configuration.ClientId is not specified");
-            }
-            if (string.IsNullOrEmpty(configuration.ClientSecret))
-            {
-                throw new NullReferenceException("configuration.ClientSecret is not specified");
-            }
-            if (string.IsNullOrEmpty(configuration.Tenant))
-            {
-                throw new NullReferenceException("configuration.Tenant is not specified");
-            }
             if (string.IsNullOrEmpty(configuration.IdentifierUri))
             {
                 throw new NullReferenceException("configuration.IdentifierUri is not specified");
